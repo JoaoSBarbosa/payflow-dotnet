@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using payFlow.Core.Enums;
+using payFlow.Core.Models.Base;
 
 namespace payFlow.Core.Models
 {
-    internal class Transaction
+    public class Transaction: BaseEntity
     {
+        public DateTime? PaidOrReceivedAt { get; set; }
+        public ETransactionType Type { get; set; } = ETransactionType.Withdraw;
+        public Decimal Amount { get; set; }
+        public long CategoryId { get; private set; }
+        public Category Category { get; set; } = null!;
+
+        public string UserId { get; set; } = string.Empty;
     }
 }
