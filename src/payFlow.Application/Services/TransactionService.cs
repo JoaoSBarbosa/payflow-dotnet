@@ -1,8 +1,8 @@
-﻿using payFlow.Core.Enums;
+﻿using payFlow.Application.Interfaces;
+using payFlow.Core.Enums;
 using payFlow.Core.Factories;
-using payFlow.Core.Interfaces;
 
-namespace payFlow.Core.Services
+namespace payFlow.Application.Services
 {
     public class TransactionService : ITransactionService
     {

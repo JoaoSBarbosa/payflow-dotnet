@@ -1,11 +1,6 @@
 ﻿using payFlow.Core.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace payFlow.Core.Interfaces
+namespace payFlow.Application.Interfaces
 {
     public interface ITransactionService
     {
