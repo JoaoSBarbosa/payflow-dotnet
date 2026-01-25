@@ -10,13 +10,15 @@
     <Folder Include="DTOs\Categories\Requests\" />
     <Folder Include="DTOs\Categories\Response\" />
     <Folder Include="DTOs\Transactions\Response\" />
-    <Folder Include="DTOs\Transactions\Requests\" />
     <Folder Include="DTOs\Users\Requests\" />
     <Folder Include="DTOs\Users\Response\" />
     <Folder Include="Mappers\" />
     <Folder Include="Ports\Services\" />
     <Folder Include="Ports\Repositories\" />
-    <Folder Include="Validators\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="12.1.1" />
   </ItemGroup>
 
   <ItemGroup>
