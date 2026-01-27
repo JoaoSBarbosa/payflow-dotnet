@@ -8,6 +8,8 @@ namespace payFlow.Core.Models
         public DateTime? UpdateAt { get; set; }
         public string UserId { get; set; } = string.Empty;
 
+        private readonly List<Transaction> _transactions = new();
+        public IReadOnlyCollection<Transaction> Transactions => _transactions;
         public Category(string title, string userId, string? description = null) : base(title)
         {
             UserId = userId;

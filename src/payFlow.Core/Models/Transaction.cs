@@ -11,6 +11,7 @@ namespace payFlow.Core.Models
         public long CategoryId { get; private set; }
         public Category Category { get; set; } = null!;
 
+
         public string UserId { get; set; } = string.Empty;
     }
 }
