@@ -17,7 +17,10 @@ builder.Services.AddSwaggerGen(s =>
 
 builder.Services.AddInfra(builder.Configuration);
 builder.Services.AddValidatorsFromAssemblyContaining<TransactionCreate>();
-builder.Services.AddDbContext<PayFlowContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("LinuxConnection")));
+
+var connection = builder.Configuration.GetConnectionString("LinuxConnection");
+builder.Services.AddDbContext<PayFlowContext>(option => 
+    option.UseSqlServer(connection ?? string.Empty));
 builder.Services.AddControllers();
 
 
