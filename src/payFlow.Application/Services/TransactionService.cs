@@ -1,4 +1,5 @@
-﻿using payFlow.Application.Interfaces;
+﻿using payFlow.Application.DTOs.Transactions.Response;
+using payFlow.Application.Interfaces;
 using payFlow.Core.Enums;
 using payFlow.Core.Factories;
 
@@ -6,6 +7,11 @@ namespace payFlow.Application.Services
 {
     public class TransactionService : ITransactionService
     {
+        public Task<IEnumerable<TransactionResponse>> GetAllTransactionsAsync()
+        {
+            return Task.FromResult<IEnumerable<TransactionResponse>>(new List<TransactionResponse>());
+        }
+
         public async Task ProcessTransactionAsync(int userId, string title, decimal amount, ETransactionType type, long categoryId)
         {
 

@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="DTOs\Categories\Requests\" />
     <Folder Include="DTOs\Categories\Response\" />
-    <Folder Include="DTOs\Transactions\Response\" />
     <Folder Include="DTOs\Users\Requests\" />
     <Folder Include="DTOs\Users\Response\" />
     <Folder Include="Mappers\" />

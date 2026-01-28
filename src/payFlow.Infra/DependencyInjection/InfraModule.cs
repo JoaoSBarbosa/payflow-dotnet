@@ -10,7 +10,7 @@ namespace payFlow.Infra.DependencyInjection
 
         public static IServiceCollection AddInfra(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<PayFlowContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<PayFlowContext>(options => options.UseSqlServer(configuration.GetConnectionString("LinuxConnection")));
             //services.AddScoped<ITransactionRepository, TransactionRepository>();
             return services;
 

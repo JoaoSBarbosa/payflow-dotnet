@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using payFlow.Core.Models;
+using System.Reflection;
 
 namespace payFlow.Infra.Data
 {
-    public class PayFlowContext: DbContext
+    public class PayFlowContext : DbContext
     {
         public PayFlowContext(DbContextOptions<PayFlowContext> optionsBuilder) : base(optionsBuilder) { }
 
@@ -13,7 +14,8 @@ namespace payFlow.Infra.Data
 
         override protected void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //base.OnModelCreating(modelBuilder);
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(PayFlowContext).Assembly);
+            // vai varrer o dll procurando todas as classes que implementam IEntityTypeConfiguration<T> e aplicar as configurações
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
+    }
 }

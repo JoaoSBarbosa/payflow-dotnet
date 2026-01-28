@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace payFlow.Application.DTOs.Transactions.Response
+﻿namespace payFlow.Application.DTOs.Transactions.Response
 {
-    internal class TransactionResponse
+    public record TransactionResponse(
+        long Id ,
+        string Title,
+        DateTime CreatedAt,
+        DateTime PaidOrReceivedAt,
+        Decimal Amount,
+        int Type,
+        string CategoryName,
+        long CategoryId,
+        string UserId)
     {
     }
 }

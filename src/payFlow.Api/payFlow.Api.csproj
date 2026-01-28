@@ -8,9 +8,12 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.1" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.23" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\payFlow.Application\payFlow.Application.csproj" />
     <ProjectReference Include="..\payFlow.core\payFlow.Core.csproj" />
     <ProjectReference Include="..\payFlow.Infra\payFlow.Infra.csproj" />
   </ItemGroup>

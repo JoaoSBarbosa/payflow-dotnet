@@ -17,7 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\payFlow.Application\payFlow.Application.csproj" />
-    <ProjectReference Include="..\payFlow.core\payFlow.Core.csproj" />
+    <ProjectReference Include="..\payFlow.Core\payFlow.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

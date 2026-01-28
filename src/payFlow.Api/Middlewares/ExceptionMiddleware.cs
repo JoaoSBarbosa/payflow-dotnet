@@ -1,4 +1,6 @@
-﻿using payFlow.Api.Contracts.Errors;
+﻿
+
+using payFlow.Api.Contracts.Errors;
 using payFlow.Api.Contracts.Response;
 
 namespace payFlow.Api.Middlewares
