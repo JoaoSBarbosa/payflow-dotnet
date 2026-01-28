@@ -2,7 +2,7 @@ using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using payFlow.Api.Middlewares;
 using payFlow.Application.DTOs.Transactions.Requests;
-using payFlow.Infra.Data;
+using payFlow.Infra.Data.Context;
 using payFlow.Infra.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
