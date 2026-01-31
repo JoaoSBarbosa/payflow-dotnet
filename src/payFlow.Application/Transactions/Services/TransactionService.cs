@@ -1,9 +1,9 @@
-﻿using payFlow.Application.DTOs.Transactions.Response;
-using payFlow.Application.Interfaces;
+﻿using payFlow.Application.Transactions.DTOs.Response;
+using payFlow.Application.Transactions.Interfaces;
 using payFlow.Core.Enums;
 using payFlow.Core.Factories;
 
-namespace payFlow.Application.Services
+namespace payFlow.Application.Transactions.Services
 {
     public class TransactionService : ITransactionService
     {

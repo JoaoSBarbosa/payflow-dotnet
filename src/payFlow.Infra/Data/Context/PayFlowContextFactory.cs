@@ -18,8 +18,8 @@ public class PayFlowContextFactory: IDesignTimeDbContextFactory<PayFlowContext>
             .AddEnvironmentVariables()
             .Build();
 
-        var connectionString = config.GetConnectionString("LinuxConnection");
-        if ( string.IsNullOrWhiteSpace(connectionString)) throw new InvalidOperationException("ConnectionString 'LinuxConnection' não configurada.");
+        var connectionString = config.GetConnectionString("DefaultConnection");
+        if ( string.IsNullOrWhiteSpace(connectionString)) throw new InvalidOperationException("ConnectionString 'DefaultConnection' não configurada.");
 
         var optionsBuilder = new DbContextOptionsBuilder<PayFlowContext>();
         optionsBuilder.UseSqlServer(connectionString);

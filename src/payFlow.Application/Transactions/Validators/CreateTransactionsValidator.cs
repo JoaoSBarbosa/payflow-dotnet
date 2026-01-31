@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using payFlow.Application.DTOs.Transactions.Requests;
+using payFlow.Application.Transactions.DTOs.Requests;
 
-namespace payFlow.Application.Validators
+namespace payFlow.Application.Transactions.Validators
 {
     public class CreateTransactionsValidator: AbstractValidator<TransactionCreate>
     {

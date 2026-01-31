@@ -1,11 +1,11 @@
-﻿namespace payFlow.Application.DTOs.Transactions.Response
+﻿namespace payFlow.Application.Transactions.DTOs.Response
 {
     public record TransactionResponse(
         long Id ,
         string Title,
         DateTime CreatedAt,
         DateTime PaidOrReceivedAt,
-        Decimal Amount,
+        decimal Amount,
         int Type,
         string CategoryName,
         long CategoryId,

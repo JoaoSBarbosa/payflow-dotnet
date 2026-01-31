@@ -7,20 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\Categories\Requests\" />
-    <Folder Include="DTOs\Categories\Response\" />
-    <Folder Include="DTOs\Users\Requests\" />
-    <Folder Include="DTOs\Users\Response\" />
-    <Folder Include="Mappers\" />
+    <Folder Include="Categories\Filter\" />
+    <Folder Include="Users\DTOs\Requests\" />
+    <Folder Include="Users\DTOs\Response\" />
+    <Folder Include="Users\" />
     <Folder Include="Ports\Services\" />
-    <Folder Include="Ports\Repositories\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="12.1.1" />
   </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+	</ItemGroup>
 
-  <ItemGroup>
+	<ItemGroup>
     <ProjectReference Include="..\payFlow.Core\payFlow.Core.csproj" />
   </ItemGroup>
 

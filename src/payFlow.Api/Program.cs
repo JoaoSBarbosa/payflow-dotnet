@@ -1,7 +1,9 @@
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using payFlow.Api.Middlewares;
-using payFlow.Application.DTOs.Transactions.Requests;
+using payFlow.Application;
+using payFlow.Application.Categories.Validators;
+using payFlow.Application.Transactions.DTOs.Requests;
 using payFlow.Infra.Data.Context;
 using payFlow.Infra.DependencyInjection;
 
@@ -16,9 +18,12 @@ builder.Services.AddSwaggerGen(s =>
 
 
 builder.Services.AddInfra(builder.Configuration);
-builder.Services.AddValidatorsFromAssemblyContaining<TransactionCreate>();
+builder.Services.AddApplication();
 
-var connection = builder.Configuration.GetConnectionString("LinuxConnection");
+builder.Services.AddValidatorsFromAssemblyContaining<TransactionCreate>();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateCategoryValidator>();
+
+string? connection = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<PayFlowContext>(option => 
     option.UseSqlServer(connection ?? string.Empty));
 builder.Services.AddControllers();
