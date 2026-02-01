@@ -1,11 +1,11 @@
 ﻿using FluentAssertions;
-using Microsoft.VisualStudio.TestPlatform.Utilities;
 using payFlow.Core.Commons.ExceptionsMessage;
 using payFlow.Core.Exceptions;
 using payFlow.Core.Models;
+using payFlow.UnitTests.Entities.Categories.Fixtures;
 using Xunit.Abstractions;
-
-namespace payFlow.Tests.Entities.Categories
+//payFlow.UnitTests
+namespace payFlow.UnitTests.Entities.Categories
 {
     [Collection(nameof(CategoryTestFixtureCollection))]
     public class CategoryEntityTests(CategoryTestFixture fixture, ITestOutputHelper output)

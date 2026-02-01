@@ -13,7 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "payFlow.Application", "src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "payFlow.Infra", "src\payFlow.Infra\payFlow.Infra.csproj", "{ACC31900-C5DB-4F8D-A422-8E9E635CA461}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "payFlow.Tests", "tests\payFlow.Tests\payFlow.Tests.csproj", "{5A2C3574-E1FE-4B97-ADDB-17B2E5E868BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "payFlow.UnitTests", "tests\payFlow.Tests\payFlow.UnitTests.csproj", "{5A2C3574-E1FE-4B97-ADDB-17B2E5E868BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "payFlow.IntegrationTests", "tests\payFlow.IntegrationTests\payFlow.IntegrationTests.csproj", "{2D23D692-94E6-45AB-AC27-1D0F689860B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{5A2C3574-E1FE-4B97-ADDB-17B2E5E868BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A2C3574-E1FE-4B97-ADDB-17B2E5E868BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A2C3574-E1FE-4B97-ADDB-17B2E5E868BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D23D692-94E6-45AB-AC27-1D0F689860B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D23D692-94E6-45AB-AC27-1D0F689860B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D23D692-94E6-45AB-AC27-1D0F689860B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D23D692-94E6-45AB-AC27-1D0F689860B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

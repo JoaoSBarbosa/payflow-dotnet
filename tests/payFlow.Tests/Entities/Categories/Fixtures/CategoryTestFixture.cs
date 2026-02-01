@@ -1,7 +1,7 @@
 ﻿using payFlow.Core.Models;
 using payFlow.Tests.Commons;
 
-namespace payFlow.Tests.Entities.Categories
+namespace payFlow.UnitTests.Entities.Categories.Fixtures
 {
     public class CategoryTestFixture : BaseFixture
     {
