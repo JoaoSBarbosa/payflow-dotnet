@@ -24,7 +24,7 @@ namespace payFlow.Api.Controllers
         public async Task<ActionResult> Create([FromBody] CreateCategory category)
         {
             var result = await _categoryService.CreateCategory(category);
-            return Ok(result);
+            return CreatedAtAction(nameof(Create), result);
         }
     }
 }
