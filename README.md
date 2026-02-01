@@ -3,106 +3,162 @@
 ![.NET](https://img.shields.io/badge/.NET-8.0-blue)
 ![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
 ![License](https://img.shields.io/badge/license-MIT-green)
+![Tests](https://img.shields.io/badge/tests-unit%20%7C%20integration%20%7C%20e2e-success)
 
 ## Visão Geral
 
-**PayFlow** é um sistema de organização e gestão de transações financeiras, voltado para controle de pagamentos, fluxo de caixa e consolidação de dados financeiros.
+**PayFlow** é uma API para organização e gestão de transações financeiras, com foco em controle de categorias, entradas, saídas e fluxo de caixa.
 
-O projeto está sendo desenvolvido com foco em **arquitetura limpa**, separação de responsabilidades e boas práticas do ecossistema **.NET**.
+O projeto foi construído com forte ênfase em **Clean Architecture**, **separação de responsabilidades**, **testabilidade** e **boas práticas do ecossistema .NET**, servindo tanto como base real de produto quanto como referência arquitetural.
+
+---
+
+## Principais Conceitos
+
+* Arquitetura em camadas bem definidas
+* Domínio rico com validações explícitas
+* Casos de uso isolados na camada Application
+* Persistência desacoplada via portas (Ports & Adapters)
+* Estratégia clara de testes (Unit, Integration e E2E)
+* Infraestrutura facilmente substituível (SQL Server, SQLite, etc.)
 
 ---
 
 ## Tecnologias
 
-- .NET 8
-- ASP.NET Core
-- Entity Framework Core
-- SQL Server
-- Injeção de Dependência
-- Cache em memória
+* .NET 8
+* ASP.NET Core
+* Entity Framework Core
+* SQL Server (produção / desenvolvimento)
+* SQLite (testes)
+* FluentValidation
+* xUnit
+* FluentAssertions
+* WebApplicationFactory (E2E)
+* Injeção de Dependência nativa
 
 ---
 
 ## Estrutura do Projeto
 
+### Código-fonte
+
 ```text
 src/
- ├─ PayFlow.Api          # Camada de apresentação (API)
- ├─ PayFlow.Core         # Domínio, entidades e regras de negócio
- ├─ PayFlow.Application  # Casos de uso e contratos
- ├─ PayFlow.Infra        # Persistência, EF Core e integrações externas
+ ├─ payFlow.Api          # Camada de apresentação (HTTP / Controllers / Middlewares)
+ ├─ payFlow.Application  # Casos de uso, DTOs, serviços e contratos
+ ├─ payFlow.Core         # Domínio, entidades, regras e validações
+ ├─ payFlow.Infra        # Persistência, EF Core, Migrations e Repositórios
+```
+
+### Testes
+
+```text
+tests/
+ ├─ payFlow.Tests            # Testes unitários (domínio, validações, entidades)
+ ├─ payFlow.IntegrationTests # Testes de integração (Service → Repository → DB)
+ ├─ payFlow.E2ETests         # Testes ponta-a-ponta (HTTP → API → DB)
 ```
 
 ---
 
-## Objetivo
+## Estratégia de Testes
 
-Fornecer uma base sólida para gerenciamento financeiro, permitindo:
+O projeto adota **três níveis claros de testes**, cada um com responsabilidade bem definida:
 
-- Cadastro e consulta de transações
-- Controle de fluxo financeiro
-- Evolução futura para relatórios e integrações
+### Testes Unitários
+
+* Foco em regras de negócio puras
+* Sem acesso a banco ou infraestrutura
+* Testam entidades, validações e comportamentos isolados
+
+Projeto:
+
+```
+payFlow.Tests
+```
+
+---
+
+### Testes de Integração
+
+* Testam fluxo real entre **Application → Infra**
+* Usam EF Core real com **SQLite em memória**
+* Validam persistência e comportamento de serviços
+
+Projeto:
+
+```
+payFlow.IntegrationTests
+```
+
+Exemplo de fluxo testado:
+
+```
+Service → Repository → DbContext → Banco
+```
+
+---
+
+### Testes End-to-End (E2E)
+
+* Exercitam a aplicação como um todo
+* Sobem a API real via `WebApplicationFactory`
+* Executam chamadas HTTP reais
+* Validam contrato da API
+
+Projeto:
+
+```
+payFlow.E2ETests
+```
+
+Fluxo completo:
+
+```
+HTTP → Controller → Application → Infra → Database
+```
+
+---
+
+## Arquitetura (Visão Simplificada)
+
+```text
+API
+ └─ Application
+     └─ Core
+     └─ Ports
+         └─ Infra
+```
+
+* **API** depende apenas de Application
+* **Application** não conhece Infra
+* **Infra** implementa contratos definidos na Application
+* **Core** não depende de nada
 
 ---
 
 ## 🔐 Configuração segura com dotnet user-secrets
 
-Este projeto utiliza **dotnet user-secrets** para gerenciar informações sensíveis **durante o desenvolvimento**, como a **ConnectionString**, evitando que dados sensíveis sejam versionados no repositório.
+Durante o desenvolvimento, informações sensíveis (como **ConnectionString**) não ficam versionadas no repositório.
 
-### O que é o dotnet user-secrets?
+O projeto utiliza **dotnet user-secrets** para isso.
 
-O **user-secrets** é um recurso do .NET que permite armazenar configurações sensíveis fora do projeto, associadas apenas ao ambiente de desenvolvimento do usuário.
+### Inicializando
 
-Esses dados:
-
-- ❌ não ficam no `appsettings.json`
-- ❌ não são versionados no Git
-- ❌ não devem ser usados em produção
-- ✅ ficam armazenados localmente na máquina do desenvolvedor
-
-No Linux, os secrets são armazenados em:
-
-```text
-~/.microsoft/usersecrets/<UserSecretsId>/secrets.json
-```
-
----
-
-### Inicializando o user-secrets
-
-Execute o comando **no projeto que consome a configuração** (geralmente `PayFlow.Api`):
+No projeto `payFlow.Api`:
 
 ```bash
 dotnet user-secrets init
 ```
 
-Isso adiciona automaticamente ao `.csproj`:
-
-```xml
-<UserSecretsId>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</UserSecretsId>
-```
-
----
-
 ### Configurando a ConnectionString
-
-Após inicializar, defina a ConnectionString:
 
 ```bash
 dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=localhost;Database=PayFlowDb;User Id=sa;Password=SuaSenha;"
 ```
 
-Para listar os secrets configurados:
-
-```bash
-dotnet user-secrets list
-```
-
----
-
-### Utilizando a ConnectionString na aplicação
-
-No `Program.cs` da API:
+### Uso na aplicação
 
 ```csharp
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -111,44 +167,24 @@ builder.Services.AddDbContext<PayFlowContext>(options =>
     options.UseSqlServer(connectionString));
 ```
 
-O .NET carrega automaticamente os **user-secrets** quando o ambiente está definido como `Development`.
-
----
-
-### appsettings.json (sem informações sensíveis)
-
-```json
-{
-  "ConnectionStrings": {
-    "DefaultConnection": ""
-  }
-}
-```
-
----
-
 ### Importante
 
-- **Não utilize user-secrets em produção**
-- Para produção, utilize:
+* User-secrets **somente para desenvolvimento**
+* Em produção, utilize:
 
-  - Variáveis de ambiente
-  - Azure Key Vault
-  - Docker Secrets
-  - Kubernetes Secrets
+  * Variáveis de ambiente
+  * Docker Secrets
+  * Azure Key Vault
+  * Kubernetes Secrets
 
 ---
 
 ## Status
 
-🚧 Projeto em desenvolvimento.
+🚧 Projeto em desenvolvimento contínuo, com foco em qualidade de código, arquitetura e cobertura de testes.
 
 ---
 
 ## Licença
 
 Este projeto está licenciado sob a licença **MIT**.
-
-```
-
-```
