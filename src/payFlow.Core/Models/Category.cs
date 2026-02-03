@@ -1,5 +1,6 @@
 ﻿using payFlow.Core.Models.Base;
 using payFlow.Core.Validations;
+using System.Text.Json.Serialization;
 
 namespace payFlow.Core.Models
 {
@@ -17,6 +18,7 @@ namespace payFlow.Core.Models
             UserId = userId;
             Description = description;
         }
+        [JsonConstructor]
         public Category() : base()
         {
 

@@ -11,5 +11,7 @@ namespace payFlow.Application.Features.Categories.Ports
         Task Create(Category category);
         Task Update(Category category);
         Task Delete(Category category);
+
+        Task Delete(long id);
     }
 }

@@ -86,5 +86,10 @@ namespace payFlow.Infra.Repositories
 
             return new PagedResult<Category>(items, totalItems, filter.Page, filter.PageSize);
         }
+
+        public async Task Delete(long id)
+        {
+            await _payFlowContext.Categories.Where( c => c.Id == id).ExecuteDeleteAsync();
+        }
     }
 }

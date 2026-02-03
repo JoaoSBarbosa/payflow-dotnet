@@ -27,6 +27,12 @@ namespace payFlow.Application.Features.Categories.Services
             return CategoryMap.ToResponse(entity);
         }
 
+        public async Task Delete(long id)
+        {
+            CheckIdField(id);
+            await _categoryRepository.Delete(id);
+        }
+
         public async Task<PagedResult<CategoryResponse>> GetAllAsync(CategoryFilter filter)
         {
             var result = await _categoryRepository.GetPageCategory(filter);
@@ -43,9 +49,15 @@ namespace payFlow.Application.Features.Categories.Services
 
         public async Task<CategoryResponse> GetById(long id)
         {
-            if (id <= 0) throw new FieldNullException("Necessárion informar o id para busca");
+            CheckIdField(id);
             var entity = await _categoryRepository.GetById(id) ?? throw new NotFoundException($"Categoria {id} não encontrada");
             return CategoryMap.ToResponse(entity);
+        }
+
+        private void CheckIdField(long id)
+        {
+            if (id  <= 0) throw new FieldNullException("Necessárion informar o id válido para busca");
+
         }
     }
 }

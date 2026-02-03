@@ -10,5 +10,6 @@ namespace payFlow.Application.Features.Categories.Interfaces
         Task<PagedResult<CategoryResponse>> GetAllAsync(CategoryFilter filter );
         Task<CategoryResponse> CreateCategory(CreateCategory category);
         Task<CategoryResponse> GetById(long id);
+        Task Delete(long id);
     }
 }

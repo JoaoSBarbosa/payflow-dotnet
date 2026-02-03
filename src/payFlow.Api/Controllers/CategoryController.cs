@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using payFlow.Api.Contracts.Response;
+using payFlow.Api.Adapter;
 using payFlow.Application.Features.Categories.Interfaces;
 using payFlow.Application.Features.Categories.Query;
 using payFlow.Application.Features.Categories.Requests;
-using payFlow.Application.Features.Categories.Response;
 
 namespace payFlow.Api.Controllers
 {
@@ -18,7 +17,7 @@ namespace payFlow.Api.Controllers
         public async Task<ActionResult> GetAll([FromQuery] CategoryFilter filter)
         {
             var result = await _categoryService.GetAllAsync(filter);
-            return Ok(result);
+            return Ok(PagedResponseMapper.From(result));
 
         }
 
