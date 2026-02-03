@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using payFlow.Application.Categories.DTOs.Requests;
-using payFlow.Application.Categories.Interfaces;
-using payFlow.Application.Categories.Query;
+using payFlow.Api.Contracts.Response;
+using payFlow.Application.Features.Categories.Interfaces;
+using payFlow.Application.Features.Categories.Query;
+using payFlow.Application.Features.Categories.Requests;
+using payFlow.Application.Features.Categories.Response;
 
 namespace payFlow.Api.Controllers
 {
@@ -20,11 +22,18 @@ namespace payFlow.Api.Controllers
 
         }
 
+        [HttpGet("{id:long}")]
+        public async Task<ActionResult> GetById([FromRoute] long id)
+        {
+            var result = await _categoryService.GetById(id);
+            return Ok(result);
+        }
+
         [HttpPost]
         public async Task<ActionResult> Create([FromBody] CreateCategory category)
         {
             var result = await _categoryService.CreateCategory(category);
-            return CreatedAtAction(nameof(Create), result);
+            return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
         }
     }
 }

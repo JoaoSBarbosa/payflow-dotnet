@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using payFlow.Application.Categories.Ports;
+using payFlow.Application.Features.Categories.Ports;
 using payFlow.Application.Ports.Repositories;
 using payFlow.Infra.Data.Context;
 using payFlow.Infra.Repositories;

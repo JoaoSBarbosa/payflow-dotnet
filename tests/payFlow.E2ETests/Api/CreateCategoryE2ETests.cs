@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 using payFlow.Application.Categories.DTOs.Requests;
-using payFlow.Application.Categories.DTOs.Response;
+using payFlow.Application.Features.Categories.Response;
 using payFlow.E2ETests.Common;
 using System;
 using System.Collections.Generic;

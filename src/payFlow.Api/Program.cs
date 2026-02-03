@@ -1,9 +1,10 @@
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using payFlow.Api.Filters;
 using payFlow.Api.Middlewares;
 using payFlow.Application;
-using payFlow.Application.Categories.Validators;
-using payFlow.Application.Transactions.DTOs.Requests;
+using payFlow.Application.Features.Categories.Validators;
+using payFlow.Application.Features.Transactions.DTOs.Requests;
 using payFlow.Infra.Data.Context;
 using payFlow.Infra.DependencyInjection;
 
@@ -26,7 +27,10 @@ builder.Services.AddValidatorsFromAssemblyContaining<CreateCategoryValidator>();
 string? connection = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<PayFlowContext>(option => 
     option.UseSqlServer(connection ?? string.Empty));
-builder.Services.AddControllers();
+builder.Services.AddControllers( options =>
+{
+    options.Filters.Add<ApiResponseFilter>();   
+});
 
 
 var app = builder.Build();

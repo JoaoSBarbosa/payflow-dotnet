@@ -1,6 +1,8 @@
-﻿namespace payFlow.Application.Common.Pageds
+﻿using payFlow.Application.Common.Request;
+
+namespace payFlow.Application.Common.Pageds
 {
-    public abstract class PagedRequest
+    public abstract class PagedRequest: BaseRequest
     {
 
         public int Page { get; set; } = 1;

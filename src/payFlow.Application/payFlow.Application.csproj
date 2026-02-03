@@ -7,10 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Categories\Filter\" />
-    <Folder Include="Users\DTOs\Requests\" />
-    <Folder Include="Users\DTOs\Response\" />
-    <Folder Include="Users\" />
+    <Folder Include="Features\Categories\Filter\" />
+    <Folder Include="Features\Users\DTOs\Requests\" />
+    <Folder Include="Features\Users\DTOs\Response\" />
+    <Folder Include="Features\Users\" />
     <Folder Include="Ports\Services\" />
   </ItemGroup>
 

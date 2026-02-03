@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using payFlow.Application.Transactions.Interfaces;
-
+using payFlow.Application.Features.Transactions.Interfaces;
 
 namespace payFlow.Api.Controllers
 {

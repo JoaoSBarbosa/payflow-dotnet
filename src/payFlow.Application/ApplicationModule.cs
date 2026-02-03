@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using payFlow.Application.Categories.Interfaces;
-using payFlow.Application.Categories.Services;
+using payFlow.Application.Features.Categories.Interfaces;
+using payFlow.Application.Features.Categories.Services;
 
 namespace payFlow.Application
 {

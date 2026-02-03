@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using payFlow.Application.Categories.Ports;
-using payFlow.Application.Categories.Query;
 using payFlow.Application.Common.Pageds;
-using payFlow.Application.Query;
+using payFlow.Application.Features.Categories.Ports;
+using payFlow.Application.Features.Categories.Query;
 using payFlow.Core.Models;
 using payFlow.Infra.Data.Context;
 

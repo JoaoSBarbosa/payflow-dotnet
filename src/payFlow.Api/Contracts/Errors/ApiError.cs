@@ -1,8 +1,4 @@
 ﻿namespace payFlow.Api.Contracts.Errors
 {
-    public sealed class ApiError
-    {
-        public string Code { get; set; }
-        public string Message { get; set; } = string.Empty;
-    }
+    public record class ApiError(int Code, string Error, string Message) { }
 }
